@@ -1,1 +1,1 @@
-from manager import PinManager
+from .manager import PinManager

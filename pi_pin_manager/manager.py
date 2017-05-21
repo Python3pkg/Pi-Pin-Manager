@@ -19,8 +19,8 @@ class PinManager(object):
     def _config_from_file(config_file):
         with open(config_file, 'rb') as f:
             config = yaml.load(f)
-        for k, v in config.items():
-            keys = v.keys()
+        for k, v in list(config.items()):
+            keys = list(v.keys())
             if 'mode' not in keys:
                 message = "'mode' key is missing for pin {0} in config"
                 raise ValueError(message.format(k))

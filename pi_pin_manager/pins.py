@@ -27,7 +27,7 @@ class Pin(object):
 
     @classmethod
     def generate_pins(cls, config, gpio):
-        for k, v in config.iteritems():
+        for k, v in config.items():
             yield cls(
                 number=k,
                 mode=v['mode'],
@@ -85,7 +85,7 @@ class Pin(object):
     def settings(self):
         prefix = '_pin_'
         return {k.replace(prefix, ''): v
-                for k, v in self.__dict__.items() if k.startswith(prefix)}
+                for k, v in list(self.__dict__.items()) if k.startswith(prefix)}
 
     def read(self):
         return self._gpio.input(self.number)
